@@ -1,10 +1,10 @@
-import React from "react";
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 import HomeScreen from "./index";
-import ProfileScreen from "./profile";
 import PlaylistScreen from "./playlist";
+import PlaylistAppScreen from "./playlistApp";
+import ProfileScreen from "./profile";
 import SettingsScreen from "./settings";
 
 const Drawer = createDrawerNavigator();
@@ -15,12 +15,12 @@ function CustomDrawerContent(props: any) {
       {/* Profile Picture */}
       <View style={styles.profileContainer}>
         <Image
-          source={require("../../assets/images/ken.jpeg")}
+          source={require("../../assets/images/clarke.webp")}
           style={styles.profileImage}
         />
       </View>
 
-      {/* Default items (now includes Playlist & Settings too) */}
+      {/* Default drawer items */}
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
   );
@@ -36,12 +36,18 @@ export default function HomeLayout() {
         drawerStyle: { backgroundColor: "#1c1c1c" },
         drawerActiveTintColor: "#1DB954",
         drawerInactiveTintColor: "#fff",
+
+        // ✅ Swipe gestures
+        swipeEnabled: true,
+        swipeEdgeWidth: 9999, // Full screen swipe
+        drawerType: "front",  // Drawer slides over screen
       }}
     >
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
-      <Drawer.Screen name="Playlist" component={PlaylistScreen} />
+      <Drawer.Screen name="My Music" component={PlaylistScreen} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
+      <Drawer.Screen name="Playlist (Reducer)" component={PlaylistAppScreen} />
     </Drawer.Navigator>
   );
 }
