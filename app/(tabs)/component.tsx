@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import { Text, Button, Image, ScrollView, StyleSheet, Alert } from "react-native";
 
 export default function ComponentShowcase() {
-    const [showGif, setShowGif] = useState(false);
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <Text style={styles.heading}>Component Scavenger Hunt</Text>

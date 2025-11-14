@@ -1,4 +1,4 @@
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerContentComponentProps } from "@react-navigation/drawer";
 import { Image, StyleSheet, View } from "react-native";
 
 import HomeScreen from "./index";
@@ -9,7 +9,7 @@ import SettingsScreen from "./settings";
 
 const Drawer = createDrawerNavigator();
 
-function CustomDrawerContent(props: any) {
+function CustomDrawerContent(props: DrawerContentComponentProps) {
   return (
     <DrawerContentScrollView {...props}>
       {/* Profile Picture */}

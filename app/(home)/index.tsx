@@ -18,15 +18,21 @@ const playlists = [
   { id: "7", title: "Workout Mix", image: require("@/assets/images/vdr.jpeg") },
 ];
 
+interface PlaylistItem {
+  id: string;
+  title: string;
+  image: any;
+}
+
 export default function HomeScreen() {
-  const renderSquareItem = ({ item }: any) => (
+  const renderSquareItem = ({ item }: { item: PlaylistItem }) => (
     <TouchableOpacity style={styles.squareCard}>
       <Image source={item.image} style={styles.squareImage} />
       <Text style={styles.cardText}>{item.title}</Text>
     </TouchableOpacity>
   );
 
-  const renderRowItem = ({ item }: any) => (
+  const renderRowItem = ({ item }: { item: PlaylistItem }) => (
     <TouchableOpacity style={styles.rowCard}>
       <Image source={item.image} style={styles.rowImage} />
       <Text style={styles.cardText}>{item.title}</Text>

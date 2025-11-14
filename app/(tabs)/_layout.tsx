@@ -1,7 +1,7 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
@@ -10,11 +10,12 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const colorSchemeKey: 'light' | 'dark' = (colorScheme ?? 'light') as 'light' | 'dark';
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[colorSchemeKey].tint,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -31,27 +32,17 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons name="home" size={size} color={color} />
           ),
         }}
       />
 
       <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="paper-plane" size={size} color={color} />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="component-showcase"
+        name="component"
         options={{
           title: 'Showcase',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons name="apps-outline" size={size} color={color} />
           ),
         }}
